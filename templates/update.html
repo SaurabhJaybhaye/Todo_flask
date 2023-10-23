@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+<!-- Title -->
+{% block title %} Index {% endblock %}
+
+<!-- Head -->
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/tables.css')}}" />
+{% endblock %} {% block body %}
+<div id="index-page">
+  <div class="form-container">
+    <center>
+      <h1>Update Task</h1>
+      <form action="/update/{{task.id}}" method="POST">
+        <input
+          type="text"
+          id="content"
+          name="content"
+          placeholder="Your Task.."
+          value="{{task.content}}"
+        />
+        <input type="submit" value="Update" />
+      </form>
+    </center>
+  </div>
+</div>
+{% endblock %}

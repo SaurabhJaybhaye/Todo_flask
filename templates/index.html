@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+<!-- Title -->
+{% block title %} Index {% endblock %}
+
+<!-- Head -->
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/tables.css')}}" />
+{% endblock %} {% block body %}
+<div id="index-page">
+  <div class="table-container">
+    <center>
+      <h1>Table</h1>
+    </center>
+
+    <table id="table">
+      <tr>
+        <th>Task</th>
+        <th>Added on</th>
+        <th colspan="2">Actions</th>
+      </tr>
+      {% for task in tasks %}
+      <tr>
+        <td>{{task.content}}</td>
+        <td>{{task.date_created}}</td>
+        <td><a href="/update/{{task.id}}"> Update </a></td>
+        <td><a href="/delete/{{task.id}}"> Delete </a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <div class="form-container">
+    <center>
+      <h1>Add Task</h1>
+      <form action="/" method="POST">
+        <input
+          type="text"
+          id="content"
+          name="content"
+          placeholder="Your Task.."
+        />
+        <input type="submit" value="Submit" />
+      </form>
+    </center>
+  </div>
+</div>
+{% endblock %}
